@@ -1,6 +1,8 @@
 *&---------------------------------------------------------------------*
 *& Include          ZBGMONSUBROUTINE
 *&---------------------------------------------------------------------*
+
+*This will get the Job details .
 FORM get_job_detail_and_update_icon.
 
   CLEAR: tmp_jobdetails, it_jobdetails, wa_jobdetail, tmpwa_jobdetail, lv_failedjob, lv_successjob.
