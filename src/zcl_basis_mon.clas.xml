@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_BASIS_MON</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Basis Monitoring Methods</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>ZGET_BGJOB_DETAILS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>SM37 Jobs</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>ZGET_BGJOB_DETAILS</CMPNAME>
+     <SCONAME>FAILEDJOB</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Job Status Count</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>ZGET_BGJOB_DETAILS</CMPNAME>
+     <SCONAME>JOBDETAILS</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Table Type to BGMON FM</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>ZGET_BGJOB_DETAILS</CMPNAME>
+     <SCONAME>JOBNAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Background Job Name</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>ZGET_BGJOB_DETAILS</CMPNAME>
+     <SCONAME>STARTDATE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Job start date</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>ZGET_BGJOB_DETAILS</CMPNAME>
+     <SCONAME>SUCCESSJOB</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Job Status Count</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

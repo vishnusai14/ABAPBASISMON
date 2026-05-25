@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Simple Background Job Monitor table</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZBGMONTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZBGMON</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBASIS_SM12_MON</FUNCNAME>
+     <SHORT_TEXT>SM12 Extract</SHORT_TEXT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>LOCK_DETAILS</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>ZSM12_TAB</TYP>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>LOCK_DETAILS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>SM12 Table Type</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZBP_JOB_LOG</FUNCNAME>
+     <SHORT_TEXT>Background Full Job Log</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>JOBCOUNT</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>TBTCJOB-JOBCOUNT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>JOBNAME</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>TBTCJOB-JOBNAME</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>JOBLOGTBL</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>ZTBTC5TAB</TYP>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>JOBCOUNT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Job ID</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>JOBNAME</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Background Job Name</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>JOBLOGTBL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table Type for ZTBTC5</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZBP_JOB_LOG_STR</FUNCNAME>
+     <SHORT_TEXT>Read the Job Logs</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>JOBCOUNT</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>TBTCJOB-JOBCOUNT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>JOBNAME</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>TBTCJOB-JOBNAME</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>LOGS</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>ZLOGSTRTYPE</TYP>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>JOBCOUNT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Job ID</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>JOBNAME</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Background Job Name</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>LOGS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Logs String</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

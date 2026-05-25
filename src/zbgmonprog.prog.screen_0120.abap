@@ -1,0 +1,12 @@
+PROCESS BEFORE OUTPUT.
+  MODULE status_0120.
+
+  CALL SUBSCREEN ss1 INCLUDING sy-repid lv_screen.
+
+
+
+*
+PROCESS AFTER INPUT.
+  CALL SUBSCREEN ss1.
+  MODULE user_command_0120.
+  MODULE exit_command_0120 AT EXIT-COMMAND.
