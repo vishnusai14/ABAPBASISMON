@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Basis Monitoring Function Group</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZBASIS_MON_FGTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZBASIS_MON_FG</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBASIS_BG_GET_JOBDETAILS</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Get Background Job Details</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>JOBNAME</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>BTCJOB</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>STARTDATE</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>BTCXDATE</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>JOBDETAILS</PARAMETER>
+       <TYP>ZBGJOB</TYP>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>SUCCESSJOB</PARAMETER>
+       <TYP>ZSTATUSJOBCOUNT</TYP>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>FAILEDJOB</PARAMETER>
+       <TYP>ZSTATUSJOBCOUNT</TYP>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>JOBNAME</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Background Job Name</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>STARTDATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Job start date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>JOBDETAILS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table Type to BGMON FM</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>SUCCESSJOB</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Job Status Count</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>FAILEDJOB</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Job Status Count</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZBASIS_BG_GET_JOB_LOG_DETAILS</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Background Job Log details</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>JOBCOUNT</PARAMETER>
+       <TYP>BTCJOBCNT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>JOBNAME</PARAMETER>
+       <TYP>BTCJOB</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>JOBLOG</PARAMETER>
+       <TYP>ZTBTC5TAB</TYP>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>JOBCOUNT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Job ID</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>JOBNAME</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Background Job Name</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>JOBLOG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table Type for ZTBTC5</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZBASIS_GET_LOCKS_DETAILS</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>SM12 Lock Details</SHORT_TEXT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>LOCKDETAILS</PARAMETER>
+       <TYP>ZSM12TAB</TYP>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>LOCKDETAILS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>SM12 Table Type</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZBASIS_GET_SERVER_LIST</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>SM51 Server Details</SHORT_TEXT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>LIST</PARAMETER>
+       <TYP>ZSM51TAB</TYP>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>LIST</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure of the system list</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZBASIS_GET_WP_INFO</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Work Process List for a Single Server</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>SERVERNAME</PARAMETER>
+       <TYP>MSNAME2</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>WPLIST</PARAMETER>
+       <TYP>ZSM50TAB</TYP>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>SERVERNAME</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Application Server Instance</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>WPLIST</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>SM50 Tab</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

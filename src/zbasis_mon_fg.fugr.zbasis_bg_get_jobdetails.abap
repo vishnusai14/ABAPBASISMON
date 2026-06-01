@@ -1,37 +1,15 @@
-class ZCL_BASIS_MON definition
-  public
-  final
-  create public .
+FUNCTION zbasis_bg_get_jobdetails.
+*"----------------------------------------------------------------------
+*"*"Local Interface:
+*"  IMPORTING
+*"     VALUE(JOBNAME) TYPE  BTCJOB OPTIONAL
+*"     VALUE(STARTDATE) TYPE  BTCXDATE OPTIONAL
+*"  EXPORTING
+*"     VALUE(JOBDETAILS) TYPE  ZBGJOB
+*"     VALUE(SUCCESSJOB) TYPE  ZSTATUSJOBCOUNT
+*"     VALUE(FAILEDJOB) TYPE  ZSTATUSJOBCOUNT
+*"----------------------------------------------------------------------
 
-public section.
-
-  class-methods ZGET_BGJOB_DETAILS
-    importing
-      value(JOBNAME) type TBTCO-JOBNAME
-      value(STARTDATE) type TBTCO-STRTDATE
-    exporting
-      !JOBDETAILS type ZBGJOB
-      !SUCCESSJOB type ZSTATUSJOBCOUNT
-      !FAILEDJOB type ZSTATUSJOBCOUNT .
-  class-methods ZGET_BGJOB_LOG_DETAILS
-    importing
-      !JOBCOUNT type BTCJOBCNT
-      !JOBNAME type BTCJOB
-    exporting
-      !JOBLOG type ZTBTC5TAB .
-  class-methods ZGET_LOCKS_DETAILS
-    exporting
-      !LOCKDETAILS type ZSM12TAB .
-protected section.
-private section.
-ENDCLASS.
-
-
-
-CLASS ZCL_BASIS_MON IMPLEMENTATION.
-
-
-  method ZGET_BGJOB_DETAILS.
 
   successjob = 0.
   failedjob = 0.
@@ -40,6 +18,10 @@ CLASS ZCL_BASIS_MON IMPLEMENTATION.
         wa_jobdetail   TYPE zbgmonstruc,
         lv_failedjob   TYPE i VALUE 0,
         lv_successjob  TYPE i VALUE 0.
+
+  IF startdate IS INITIAL.
+    startdate = sy-datum.
+  ENDIF.
 
   IF jobname IS INITIAL OR jobname EQ '*'.
     SELECT jobname, jobcount, strtdate, status, joblog FROM tbtco INTO CORRESPONDING FIELDS OF TABLE @tmp_jobdetails WHERE strtdate >= @startdate.
@@ -76,32 +58,6 @@ CLASS ZCL_BASIS_MON IMPLEMENTATION.
     APPEND wa_jobdetail TO jobdetails.
     successjob = lv_successjob.
     failedjob = lv_failedjob.
-
-
-
-
+    failedjob = lv_failedjob.
   ENDLOOP.
-
-  endmethod.
-
-
-  method ZGET_BGJOB_LOG_DETAILS.
-
-      CALL FUNCTION 'ZBP_JOB_LOG'
-        EXPORTING
-          jobcount  = jobcount
-          jobname   = jobname
-        IMPORTING
-          joblogtbl = joblog.
-
-  endmethod.
-
-
-  method ZGET_LOCKS_DETAILS.
-
-    CALL FUNCTION 'ZBASIS_SM12_MON'
-        IMPORTING
-          lock_details = lockdetails.
-
-  endmethod.
-ENDCLASS.
+ENDFUNCTION.

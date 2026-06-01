@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SICF" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <URL>/sap/bc/srt/rfc/sap/zbasis_mon_srv/</URL>
+   <ICFSERVICE>
+    <ICF_NAME>ZBASIS_MON_SRV</ICF_NAME>
+    <READONLY>X</READONLY>
+    <ICF_ESI_FLAG>X</ICF_ESI_FLAG>
+    <ORIG_NAME>zbasis_mon_srv</ORIG_NAME>
+   </ICFSERVICE>
+   <ICFDOCU>
+    <ICF_NAME>ZBASIS_MON_SRV</ICF_NAME>
+    <ICF_LANGU>E</ICF_LANGU>
+    <ICF_DOCU>Generated for Web Service Administration zbasis_mon_srv</ICF_DOCU>
+   </ICFDOCU>
+  </asx:values>
+ </asx:abap>
+</abapGit>

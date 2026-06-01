@@ -1,0 +1,16 @@
+PROCESS BEFORE OUTPUT.
+* MODULE STATUS_0134.
+*
+
+LOOP AT it_serverdetails INTO wa_serverdetail WITH CONTROL zsm51tabview.
+
+  MODULE zsm51mapping.
+
+ENDLOOP.
+
+PROCESS AFTER INPUT.
+
+  LOOP .
+  ENDLOOP.
+
+  MODULE USER_COMMAND_0134.

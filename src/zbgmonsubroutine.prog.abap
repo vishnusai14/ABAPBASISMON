@@ -7,7 +7,7 @@ FORM get_job_detail_and_update_icon.
 
   CLEAR: tmp_jobdetails, it_jobdetails, wa_jobdetail, tmpwa_jobdetail, lv_failedjob, lv_successjob.
 
-  CALL FUNCTION 'ZBASIS_BG_MON'
+  CALL FUNCTION 'ZBASIS_BG_GET_JOBDETAILS'
     EXPORTING
       jobname    = jobnameio
       startdate  = startdateio
@@ -56,12 +56,12 @@ FORM get_job_logs .
 
 
 
-    CALL FUNCTION 'ZBP_JOB_LOG'
+    CALL FUNCTION 'ZBASIS_BG_GET_JOB_LOG_DETAILS'
       EXPORTING
         jobcount  = wa_singlejobdetail-jobcount
         jobname   = wa_singlejobdetail-jobname
       IMPORTING
-        joblogtbl = it_joblog.
+        joblog = it_joblog.
 
     DESCRIBE TABLE it_joblog LINES tblog-lines.
 
@@ -69,5 +69,34 @@ FORM get_job_logs .
 
   ENDIF.
 
+
+ENDFORM.
+
+
+
+
+*&---------------------------------------------------------------------*
+*& Form get_single_server_detail
+*&---------------------------------------------------------------------*
+*& text
+*&---------------------------------------------------------------------*
+*& -->  p1        text
+*& <--  p2        text
+*&---------------------------------------------------------------------*
+FORM get_single_server_detail .
+
+  IF ws_field = 'SM51NAME' AND ws_idx > 0 AND ws_idx <= lv_serverscount.
+
+    DATA(wa_singleserver) = it_serverdetails[ ws_idx ].
+
+    CALL FUNCTION 'ZBASIS_GET_WP_INFO'
+      EXPORTING
+        servername       = wa_singleserver-name
+     IMPORTING
+       WPLIST           = it_singleserverdetail.
+
+  CALL SCREEN 0135.
+
+  ENDIF.
 
 ENDFORM.
