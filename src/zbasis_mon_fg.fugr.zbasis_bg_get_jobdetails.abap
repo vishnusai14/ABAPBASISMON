@@ -8,16 +8,18 @@ FUNCTION zbasis_bg_get_jobdetails.
 *"     VALUE(JOBDETAILS) TYPE  ZBGJOB
 *"     VALUE(SUCCESSJOB) TYPE  ZSTATUSJOBCOUNT
 *"     VALUE(FAILEDJOB) TYPE  ZSTATUSJOBCOUNT
+*"     VALUE(JOBSUMMARY) TYPE  ZBGJOBSUMMARYTAB
 *"----------------------------------------------------------------------
 
 
   successjob = 0.
   failedjob = 0.
 
-  DATA: tmp_jobdetails TYPE TABLE OF tbtco,
-        wa_jobdetail   TYPE zbgmonstruc,
-        lv_failedjob   TYPE i VALUE 0,
-        lv_successjob  TYPE i VALUE 0.
+  DATA: tmp_jobdetails      TYPE TABLE OF tbtco,
+        wa_jobdetail        TYPE zbgmonstruc,
+        lv_failedjob        TYPE i VALUE 0,
+        lv_successjob       TYPE i VALUE 0,
+        wa_jobdetailsummary TYPE zbgjobsummarystruc.
 
   IF startdate IS INITIAL.
     startdate = sy-datum.
@@ -56,8 +58,16 @@ FUNCTION zbasis_bg_get_jobdetails.
     ENDTRY.
 
     APPEND wa_jobdetail TO jobdetails.
-    successjob = lv_successjob.
-    failedjob = lv_failedjob.
-    failedjob = lv_failedjob.
+
   ENDLOOP.
+
+
+
+  wa_jobdetailsummary-failedcount = lv_failedjob.
+  wa_jobdetailsummary-successcount = lv_successjob.
+
+  APPEND wa_jobdetailsummary TO jobsummary.
+
+
+
 ENDFUNCTION.

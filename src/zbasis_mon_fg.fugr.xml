@@ -37,6 +37,10 @@
        <PARAMETER>FAILEDJOB</PARAMETER>
        <TYP>ZSTATUSJOBCOUNT</TYP>
       </RSEXP>
+      <RSEXP>
+       <PARAMETER>JOBSUMMARY</PARAMETER>
+       <TYP>ZBGJOBSUMMARYTAB</TYP>
+      </RSEXP>
      </EXPORT>
      <DOCUMENTATION>
       <RSFDO>
@@ -63,6 +67,11 @@
        <PARAMETER>FAILEDJOB</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Job Status Count</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>JOBSUMMARY</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>bg mon summary table</STEXT>
       </RSFDO>
      </DOCUMENTATION>
     </item>
@@ -119,6 +128,35 @@
        <PARAMETER>LOCKDETAILS</PARAMETER>
        <KIND>P</KIND>
        <STEXT>SM12 Table Type</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZBASIS_GET_QUERY_PARAMETERS</FUNCNAME>
+     <SHORT_TEXT>Get the Query Parameters</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>REQUEST_URI</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>STRING</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>QUERY_PARAMS</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>ZQUERY_PARAMSTAB</TYP>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>REQUEST_URI</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>QUERY_PARAMS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Query Params Tables</STEXT>
       </RSFDO>
      </DOCUMENTATION>
     </item>
