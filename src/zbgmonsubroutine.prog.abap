@@ -58,10 +58,10 @@ FORM get_job_logs .
 
     CALL FUNCTION 'ZBASIS_BG_GET_JOB_LOG_DETAILS'
       EXPORTING
-        jobcount  = wa_singlejobdetail-jobcount
-        jobname   = wa_singlejobdetail-jobname
+        jobcount = wa_singlejobdetail-jobcount
+        jobname  = wa_singlejobdetail-jobname
       IMPORTING
-        joblog = it_joblog.
+        joblog   = it_joblog.
 
     DESCRIBE TABLE it_joblog LINES tblog-lines.
 
@@ -91,12 +91,33 @@ FORM get_single_server_detail .
 
     CALL FUNCTION 'ZBASIS_GET_WP_INFO'
       EXPORTING
-        servername       = wa_singleserver-name
-     IMPORTING
-       WPLIST           = it_singleserverdetail.
+        servername = wa_singleserver-name
+      IMPORTING
+        wplist     = it_singleserverdetail.
 
-  CALL SCREEN 0135.
+    CALL SCREEN 0135.
 
   ENDIF.
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*& Form get_st22_and_update_table
+*&---------------------------------------------------------------------*
+*& text
+*&---------------------------------------------------------------------*
+*& -->  p1        text
+*& <--  p2        text
+*&---------------------------------------------------------------------*
+FORM get_st22_and_update_table .
+
+  CLEAR: it_dumps, wa_dump.
+
+  CALL FUNCTION 'ZBASIS_GET_DUMPS'
+    EXPORTING
+      from_date = st22io_zdate
+      to_date   = st22io_zdateto
+    IMPORTING
+      dumps     = it_dumps.
+  DESCRIBE TABLE it_dumps LINES  zst22tabview-lines.
 
 ENDFORM.

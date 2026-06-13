@@ -28,7 +28,11 @@ DATA: it_jobdetails         TYPE TABLE OF zbgmonstruc,
       wa_serverdetail       LIKE LINE OF it_serverdetails,
       it_singleserverdetail TYPE TABLE OF zsm50,
       wa_singleserverdetail TYPE zsm50,
-      lv_serverscount       TYPE i.
+      lv_serverscount       TYPE i,
+      st22io_zdate          TYPE datum,
+      st22io_zdateto        TYPE datum,
+      it_dumps              TYPE zsnap_tab,
+      wa_dump               TYPE zsnap_struc.
 
 DATA: jobnamerow    TYPE btcjob,
       statusrow     TYPE btcstatus,
@@ -58,7 +62,14 @@ DATA: jobnamerow    TYPE btcjob,
       zsm50wppid    TYPE wppid,
       zsm50wpstatus TYPE wpstatus,
       zsm50wpreport TYPE wpreport,
-      zsm50wpbname  TYPE wpbname.
+      zsm50wpbname  TYPE wpbname,
+      st22_zdate    TYPE datum,
+      st22_ztime    TYPE uzeit,
+      st22_zuser    TYPE zuser,
+      st22_zclient  TYPE mandt,
+      st22_zhost    TYPE zhost,
+      st22_zdump    TYPE zdump,
+      st22_zprog    TYPE zdump.
 
 
 
@@ -68,7 +79,8 @@ CONTROLS: table1       TYPE TABLEVIEW USING SCREEN 0131,
           zsm12tab     TYPE TABLEVIEW USING SCREEN 0132,
           tblog        TYPE TABLEVIEW USING SCREEN 0133,
           zsm51tabview TYPE TABLEVIEW USING SCREEN 0134,
-          zsm50tabview TYPE TABLEVIEW USING SCREEN 0135.
+          zsm50tabview TYPE TABLEVIEW USING SCREEN 0135,
+          zst22tabview TYPE TABLEVIEW USING SCREEN 0137.
 
 
 
@@ -149,22 +161,29 @@ MODULE user_command_0120 INPUT.
     WHEN 'BACK'.
       LEAVE PROGRAM.
     WHEN 'SM12'.
-      IF lv_tab EQ 1 OR lv_tab EQ 3.
+      IF lv_tab EQ 1 OR lv_tab EQ 3 OR lv_tab EQ 4.
         lv_tab  = 2.
         tsc1-activetab = 'SM12'.
         lv_screen = '0132'.
       ENDIF.
     WHEN 'BGMON'.
-      IF lv_tab EQ 2 OR lv_tab EQ 3.
+      IF lv_tab EQ 2 OR lv_tab EQ 3 OR lv_tab EQ 4.
         lv_tab  = 1.
         tsc1-activetab = 'BGMON'.
         lv_screen = '0130'.
       ENDIF.
     WHEN 'SM51'.
-      IF lv_tab EQ 1 OR lv_tab EQ 2.
+      IF lv_tab EQ 1 OR lv_tab EQ 2 OR lv_tab EQ 4.
         lv_tab = 3.
         tsc1-activetab = 'SM51'.
         lv_screen = '0134'.
+      ENDIF.
+
+    WHEN 'ST22'.
+      IF lv_tab EQ 1 OR lv_tab EQ 2 OR lv_tab EQ 3.
+        lv_tab = 4.
+        tsc1-activetab = 'ST22'.
+        lv_screen = '0136'.
       ENDIF.
 
 
@@ -368,6 +387,43 @@ MODULE zsingleservermapping OUTPUT.
   zsm50wpbname = wa_singleserverdetail-wp_bname.
 
 
+
+
+
+ENDMODULE.
+*&---------------------------------------------------------------------*
+*&      Module  USER_COMMAND_0136  INPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE user_command_0136 INPUT.
+
+
+  CASE sy-ucomm.
+    WHEN 'GETST22'.
+      PERFORM get_st22_and_update_table.
+
+  ENDCASE.
+
+
+
+ENDMODULE.
+*&---------------------------------------------------------------------*
+*& Module ST22TABLEMAPPING OUTPUT
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+MODULE st22tablemapping OUTPUT.
+
+
+
+  st22_zdate = wa_dump-zdate.
+  st22_ztime = wa_dump-ztime.
+  st22_zuser = wa_dump-zuser.
+  st22_zclient = wa_dump-zclient.
+  st22_zhost = wa_dump-zhost.
+  st22_zdump = wa_dump-zdump.
+  st22_zprog = wa_dump-zprog.
 
 
 

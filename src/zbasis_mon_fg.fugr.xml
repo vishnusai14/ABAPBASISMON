@@ -114,6 +114,46 @@
      </DOCUMENTATION>
     </item>
     <item>
+     <FUNCNAME>ZBASIS_GET_DUMPS</FUNCNAME>
+     <SHORT_TEXT>ST22 Dumps</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>FROM_DATE</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>DATUM</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>TO_DATE</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>DATUM</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>DUMPS</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>ZSNAP_TAB</TYP>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>FROM_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>TO_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Date</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>DUMPS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>ZST22 Table</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
      <FUNCNAME>ZBASIS_GET_LOCKS_DETAILS</FUNCNAME>
      <REMOTE_CALL>R</REMOTE_CALL>
      <SHORT_TEXT>SM12 Lock Details</SHORT_TEXT>
